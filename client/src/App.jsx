@@ -6,10 +6,12 @@ import Dashboard from './pages/Dashboard';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/Signin';
 import Projects from './pages/Projects';
+import Header from './components/Header';
 
 const App = () => {
   return (
     <Router>
+      <Header />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
