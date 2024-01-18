@@ -113,13 +113,14 @@ form {
 .btn3 {
   padding: 13px;
   border-radius: 5px;
-  background: $linearGradient;
-  border: 1px solid #ccc;
+
+  background-color: $white;
+  border: 1px solid $gradient;
   cursor: pointer;
 
   &:hover {
     color: $white;
-    background: $gradient;
+    background: $linearGradient;
   }
 }
 
