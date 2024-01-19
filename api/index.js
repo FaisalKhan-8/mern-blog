@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 const app = express();
 
+// database configuration
 const db = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI);
@@ -15,7 +16,12 @@ const db = async () => {
 };
 db();
 
-const port = 3000;
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+// server configuration
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server running on port ${process.env.PORT}`);
 });
