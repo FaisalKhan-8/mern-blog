@@ -1,9 +1,8 @@
 import express from 'express';
+import { testapi } from '../controllers/user.controller.js';
 
 const router = express.Router();
 
-router.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+router.get('/', testapi);
 
 export default router;
