@@ -1,7 +1,8 @@
 import User from '../models/user.model.js';
 import bcryptjs from 'bcryptjs';
+import { ErrorHandle } from '../utils/ErrorHandle.js';
 
-export const signupHandler = async (req, res) => {
+export const signupHandler = async (req, res, next) => {
   const { username, email, password } = req.body;
   if (
     !username ||
@@ -11,9 +12,7 @@ export const signupHandler = async (req, res) => {
     email === '' ||
     password === ''
   ) {
-    return res.status(400).json({
-      message: 'Please provide all fields',
-    });
+    next(ErrorHandle(400, 'All fields are required'));
   }
 
   // hasing password here
@@ -31,9 +30,6 @@ export const signupHandler = async (req, res) => {
     res.status(201);
     res.json({ message: 'Signup successful' });
   } catch (error) {
-    res.status(500);
-    res.json({
-      message: error.message,
-    });
+    next(error);
   }
 };
