@@ -36,7 +36,7 @@
 }
 
 form {
-  input {
+  .header-input {
     width: 200px;
     position: relative;
     padding: 10px;
@@ -193,7 +193,7 @@ form {
   .nav-logo {
     font-size: 15px;
   }
-  input {
+  .header-input {
     display: none;
   }
   .search-icon {

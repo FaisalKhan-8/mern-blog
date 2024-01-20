@@ -1,0 +1,189 @@
+.signup-logo {
+  align-self: center;
+  white-space: nowrap;
+  color: $black;
+  font-size: 3rem;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+
+  span {
+    padding-left: 2;
+    padding-right: 1;
+    color: $white;
+    border-radius: 5px;
+    background: rgb(119, 185, 245);
+    background: linear-gradient(
+      90deg,
+      rgb(42, 110, 173) 0%,
+      rgb(116, 15, 159) 27%,
+      rgb(225, 78, 156) 100%
+    );
+  }
+}
+
+.signUp-container {
+  margin-top: 3rem;
+}
+
+.signup-main-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 3px;
+}
+.signUp-left {
+  text-align: center;
+
+  p {
+    font-size: 1rem;
+    font-weight: 300;
+    text-align: left;
+    margin-top: 10px;
+  }
+}
+
+.signUp-right {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  .sign-up-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .signup-label {
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: left;
+    margin: 20px 0 0 0;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .signup-input {
+    width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-family: 'Poppins', sans-serif;
+
+    &:focus {
+      outline: 1px solid $gradient;
+    }
+  }
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.signup-btn {
+  width: 300px;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 2rem;
+  background: $linearGradient;
+  color: $white;
+  border: 1px solid $gradient;
+  cursor: pointer;
+
+  &:hover {
+    background: $ButtonGradient;
+  }
+}
+
+.signup-text {
+  display: flex;
+  gap: 10px;
+  font-size: 0.8rem;
+  margin-top: 10px;
+
+  .signup-text-span {
+    text-decoration: none;
+    font-size: 0.8rem;
+    color: $black;
+    font-family: 'Poppins', sans-serif;
+    &:hover {
+      color: $gradient;
+    }
+  }
+}
+
+// media queries
+
+@media (max-width: 545px) {
+  .signup-logo {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .signup-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5rem;
+  }
+  .signUp-left {
+    p {
+      font-size: 0.8rem;
+      word-wrap: normal;
+      font-weight: 300;
+      text-align: center;
+      margin-top: 5px;
+    }
+  }
+  .signUp-right {
+    margin-top: 2rem;
+
+    .sign-up-form-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .signup-label {
+      font-size: 1rem;
+      font-weight: 500;
+      margin: 20px 0 0 0;
+    }
+
+    .signup-input {
+      width: 50vw;
+      position: relative;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+
+      &:focus {
+        outline: 1px solid $gradient;
+      }
+    }
+  }
+
+  .signup-btn {
+    width: 50vw;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 2rem;
+    background: $linearGradient;
+    color: $white;
+    border: 1px solid $gradient;
+    cursor: pointer;
+    transition: background-color 0.5s ease-in-out 0.5s;
+
+    &:hover {
+      color: $white;
+      background: $ButtonGradient;
+    }
+  }
+}

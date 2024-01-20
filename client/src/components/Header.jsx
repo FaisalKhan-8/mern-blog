@@ -18,7 +18,7 @@ const Header = () => {
       </div>
       <div>
         <form className='search-bar'>
-          <input type='text' placeholder='Search...' />
+          <input className='header-input' type='text' placeholder='Search...' />
           <AiOutlineSearch className='search-icon' />
         </form>
       </div>
