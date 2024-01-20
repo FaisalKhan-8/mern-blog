@@ -1,11 +1,13 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { db } from './utils/dbConnect.js';
+import cors from 'cors';
 
 dotenv.config();
 
 // middleware....
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 // database Call here....
