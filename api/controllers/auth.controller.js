@@ -1,6 +1,7 @@
 import User from '../models/user.model.js';
 import bcryptjs from 'bcryptjs';
 import { ErrorHandle } from '../utils/ErrorHandle.js';
+import jwt from 'jsonwebtoken';
 
 // Signup handler...
 export const signupHandler = async (req, res, next) => {
@@ -34,26 +35,33 @@ export const signupHandler = async (req, res, next) => {
 };
 
 // Login handler...
-export const LoginHandler = async (req, res, next) => {
+export const signInHandler = async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password || email === '' || password === '') {
     next(ErrorHandle(400, 'Email or password required'));
   }
   try {
-    const user = await User.findOne({ email: email });
+    const validUser = await User.findOne({ email: email });
 
-    if (!user) {
-      next(ErrorHandle(401, 'user not found'));
+    if (!validUser) {
+      return next(ErrorHandle(404, 'user not found'));
     }
-    if (user) {
-      //comparing password...
-      if (bcryptjs.compareSync(password, user.password)) {
-        res.status(200);
-        res.json({ message: 'Login successful' });
-      } else {
-        next(ErrorHandle(401, 'Invalid password'));
-      }
+    //comparing password...
+    const ValidPassword = bcryptjs.compareSync(password, validUser.password);
+    if (!ValidPassword) {
+      return next(ErrorHandle(400, 'Invalid credentials'));
     }
+    const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
+
+    // sending the rest of the user but not the password...
+    const { password: pass, ...rest } = validUser._doc;
+
+    res
+      .status(200)
+      .cookie('access_token', token, {
+        httpOnly: true,
+      })
+      .json(rest);
   } catch (error) {
     next(error);
   }
