@@ -97,8 +97,8 @@ const SignIn = () => {
           <div className='signup-text'>
             <span>
               Don't have an account?{' '}
-              <Link to='/sign-in' className='signup-text-span'>
-                Sign In
+              <Link to='/sign-up' className='signup-text-span'>
+                Sign Up
               </Link>
             </span>
           </div>
