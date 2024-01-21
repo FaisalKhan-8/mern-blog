@@ -30,10 +30,11 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 3px;
+  padding: 10px;
 }
 .signUp-left {
   text-align: center;
+  padding: 10px;
 
   p {
     font-size: 1rem;
@@ -116,6 +117,8 @@
     }
   }
 }
+
+//error message
 
 .error-message {
   display: flex;

@@ -1,0 +1,122 @@
+.footer-main {
+  margin-top: 1.5rem;
+
+  border-top: 8px solid $primary;
+  border-left: 1px solid $primary;
+  border-right: 1px solid $primary;
+  border-bottom: 1px solid $primary;
+  border-radius: 10px;
+}
+
+.footer-left {
+  //   height: 20vh;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+
+  .footer-logo {
+    align-self: center;
+    white-space: nowrap;
+    color: $black;
+    font-size: 2rem;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+
+    span {
+      padding-left: 2;
+      padding-right: 1;
+      color: $white;
+      border-radius: 5px;
+      background: rgb(119, 185, 245);
+      background: linear-gradient(
+        90deg,
+        rgb(42, 110, 173) 0%,
+        rgb(116, 15, 159) 27%,
+        rgb(225, 78, 156) 100%
+      );
+    }
+  }
+}
+
+.footer-title {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+
+  h3 {
+    color: $gray;
+    font-size: 1.2rem;
+    font-weight: 600;
+    // white-space: nowrap;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+  }
+
+  .footer-link {
+    margin-top: 0.8rem;
+
+    .footer-individual-link {
+      color: $gray;
+      font-size: 1rem;
+      font-weight: 300;
+      //   white-space: nowrap;
+      font-family: 'Poppins', sans-serif;
+      text-decoration: none;
+    }
+  }
+}
+
+.footer-divider {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 60px;
+  width: 100%;
+  height: 1px;
+  //   opacity: 0.2;
+  background-color: $gray;
+  color: $black;
+
+  div {
+    padding: 20px;
+    .divider-link {
+      color: $gray;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-left: 20px;
+      //   white-space: nowrap;
+      font-family: 'Poppins', sans-serif;
+      text-decoration: none;
+    }
+  }
+
+  .footer-icon {
+    display: flex;
+    font-size: 1.2rem;
+    gap: 20px;
+
+    .icon-link {
+      text-decoration: none;
+      color: $gray;
+    }
+  }
+}
+
+// media queries
+@media (max-width: 545px) {
+  .footer-logo {
+    margin-top: 5px;
+    white-space: normal;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .footer-title {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    gap: 8px;
+  }
+}

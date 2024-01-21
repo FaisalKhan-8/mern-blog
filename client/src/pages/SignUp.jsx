@@ -31,7 +31,8 @@ const SignUp = () => {
 
       if (data.success === false) {
         setLoading(false);
-        return setErrorMessage(data.message);
+        setErrorMessage(data.message);
+        return;
       }
       setLoading(false);
       if (res.ok) {
@@ -96,7 +97,7 @@ const SignUp = () => {
                     <span></span>
                     <span></span>
                   </span>
-                  <span>Loading...</span>{' '}
+                  <span>Loading...</span>
                 </div>
               ) : (
                 'Sign Up'
@@ -105,7 +106,7 @@ const SignUp = () => {
           </form>
           <div className='signup-text'>
             <span>
-              Already have an account?{' '}
+              Already have an account?
               <Link to='/sign-in' className='signup-text-span'>
                 Sign In
               </Link>

@@ -3,10 +3,25 @@
 @import 'colors.scss';
 @import 'header.scss';
 @import 'sign_up.scss';
+@import 'footer.scss';
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Anybody', sans-serif;
+}
+
+body::-webkit-scrollbar {
+  width: 0.5rem;
+  // border-radius: 15px;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: $linearGradient;
+  outline: 1px solid $gradient;
 }
