@@ -1,0 +1,57 @@
+.dark {
+  background-color: $dark;
+  color: $white;
+  height: 100vh;
+
+  .nav-logo {
+    color: $white;
+  }
+
+  .nav-link {
+    .link {
+      color: $white;
+    }
+  }
+
+  .show-menu {
+    background-color: $dark;
+    color: $white;
+
+    .link {
+      color: $white;
+      &:hover {
+        color: $gradient;
+      }
+    }
+  }
+
+  .dropdown-content {
+    background-color: $dark;
+
+    .dropdown-link {
+      color: $white;
+      &:hover {
+        color: $gradient;
+      }
+    }
+  }
+
+  .signup-logo {
+    color: $white;
+  }
+  .signup-text {
+    .signup-text-span {
+      text-decoration: none;
+      font-size: 0.8rem;
+      color: $red;
+      font-family: 'Poppins', sans-serif;
+      &:hover {
+        color: $gradient;
+      }
+    }
+  }
+
+  .footer-logo {
+    color: $white;
+  }
+}

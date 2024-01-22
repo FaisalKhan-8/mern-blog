@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { FaMoon } from 'react-icons/fa';
+import { FaMoon, FaSun } from 'react-icons/fa';
 import { RxHamburgerMenu, RxCross1 } from 'react-icons/rx';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleTheme } from '../redux/theme/themeSlice';
 
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   const location = useLocation().pathname;
+  const dispatch = useDispatch();
+
   const { currentUser } = useSelector((state) => state.user);
+  const { theme } = useSelector((state) => state.theme);
 
   return (
     <nav className='nav-main'>
@@ -45,9 +49,15 @@ const Header = () => {
               Projects
             </Link>
           </li>
-          <button className='btn2'>
-            <FaMoon />
-          </button>
+          {theme === 'light' ? (
+            <button className='btn2' onClick={() => dispatch(toggleTheme())}>
+              <FaMoon />
+            </button>
+          ) : (
+            <button className='btn2' onClick={() => dispatch(toggleTheme())}>
+              <FaSun className='light-mode-button' />
+            </button>
+          )}
         </ul>
       </div>
 
@@ -56,13 +66,16 @@ const Header = () => {
       </button>
       {/* //dropdown menu... */}
       {currentUser ? (
-        <div class='dropdown'>
+        <div className='dropdown'>
           <div className='avatar '>
             <img src={currentUser.profilePicture} alt='user ' />
           </div>
-          <div class='dropdown-content'>
-            <span color='red'>@{currentUser.username}</span>
-            <span>{currentUser.email}</span>
+          <div className='dropdown-content'>
+            <span>
+              <span className='user-text'>username: </span>{' '}
+              {currentUser.username}
+            </span>
+            <span> {currentUser.email}</span>
             <Link className='dropdown-link' to={'/dashboard?tab=profile'}>
               Profile
             </Link>

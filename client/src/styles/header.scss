@@ -94,6 +94,13 @@ form {
     color: $gradient;
     border: 1px solid $gradient;
   }
+
+  .light-mode-button {
+    color: #fdb813;
+    &:hover {
+      color: $gradient;
+    }
+  }
 }
 
 .btn-container {
@@ -200,6 +207,8 @@ form {
     height: 40px;
     border: 1px solid $gradient;
     border-radius: 50%;
+    object-fit: cover;
+    margin-top: 4px;
   }
 }
 
@@ -216,6 +225,9 @@ form {
 
   :nth-child(1) {
     color: $red;
+    .user-text {
+      color: $gradient;
+    }
   }
 
   .dropdown-link {

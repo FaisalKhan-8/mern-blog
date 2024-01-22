@@ -85,6 +85,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
       <div className='footer-divider'>
         <div>
           <Link className='divider-link' to='#'>
