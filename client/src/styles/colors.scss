@@ -15,3 +15,13 @@ $ButtonGradient: linear-gradient(
   hsla(185, 90%, 51%, 1) 0%,
   hsla(120, 93%, 84%, 1) 100%
 );
+$ButtonRed: linear-gradient(
+  90deg,
+  rgb(243, 18, 176) 0%,
+  rgb(240, 135, 44) 100%
+);
+$ButtonRedAlter: linear-gradient(
+  90deg,
+  rgb(240, 135, 44) 0%,
+  rgb(243, 18, 176) 100%
+);

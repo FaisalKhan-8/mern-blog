@@ -6,6 +6,7 @@ import {
   signInSuccess,
   signInFailure,
 } from '../redux/user/userSlice';
+import OAuth from '../components/OAuth';
 
 const SignIn = () => {
   const [formData, setFormData] = useState({});
@@ -98,6 +99,7 @@ const SignIn = () => {
                 'Sign In'
               )}
             </button>
+            <OAuth />
           </form>
           <div className='signup-text'>
             <span>

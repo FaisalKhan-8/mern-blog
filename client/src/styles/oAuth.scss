@@ -1,0 +1,37 @@
+.OAuthButton {
+  width: 300px;
+  padding: 12px;
+  border-radius: 15px;
+  //   margin-top: 2rem;
+  background: $white;
+  color: $black;
+  border: 1px solid $red;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+
+  &:hover {
+    background: $ButtonRedAlter;
+  }
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+
+  .oAuth-icon {
+    width: 25px;
+    height: 20px;
+  }
+}
+
+// media queries
+
+@media (max-width: 545px) {
+  .OAuthButton {
+    width: 50vw;
+
+    span {
+      display: none;
+    }
+  }
+}
