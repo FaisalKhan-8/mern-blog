@@ -14,6 +14,8 @@ const themeSlice = createSlice({
   },
 });
 
+//import useSelector from here and directly wrap the app in main.js
+
 export const { toggleTheme } = themeSlice.actions;
 
 export default themeSlice.reducer;
