@@ -225,14 +225,16 @@
     }
 
     .signup-input {
-      width: 50vw;
-      position: relative;
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
+      input {
+        width: 50vw;
+        position: relative;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
 
-      &:focus {
-        outline: 1px solid $gradient;
+        &:focus {
+          outline: 1px solid $gradient;
+        }
       }
     }
   }

@@ -1,0 +1,111 @@
+.profile_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 10rem;
+  font-family: 'Poppins', sans-serif;
+
+  h1 {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  .profile_input {
+    input {
+      width: 50vw;
+      position: relative;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+
+      &:focus {
+        outline: 1px solid $gradient;
+      }
+    }
+  }
+
+  .profile_update_btn {
+    width: 50vw;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 2rem;
+    background: $white;
+    color: $black;
+    border: 1px solid $gradient;
+    cursor: pointer;
+    transition: background-color 0.5s ease-in-out 0.5s;
+
+    &:hover {
+      color: $white;
+      background: $ButtonGradient;
+    }
+  }
+
+  // profile image styles
+  .profile-img {
+    width: 6rem;
+    height: 6rem;
+    cursor: pointer;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    overflow: hidden;
+    border-radius: 50%;
+    img {
+      width: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #ccc;
+    }
+  }
+}
+
+.profile-d {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10rem;
+
+  .profile_delete_btn {
+    // display: inline-block;
+
+    padding: 15px;
+    border-radius: 15px;
+    margin-top: 2rem;
+    background: $ButtonRed;
+    color: $black;
+    border: 1px solid $red;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+
+    &:hover {
+      background: $ButtonRedAlter;
+    }
+  }
+}
+
+// media queries
+@media (max-width: 545px) {
+  .profile_container {
+    margin-top: 2rem;
+    display: flex;
+    margin-left: 0rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profile-d {
+    flex-direction: column;
+    margin-bottom: 10px;
+    gap: 0px;
+  }
+}
