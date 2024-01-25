@@ -51,8 +51,28 @@
     }
   }
 
-  // profile image styles
+  // profile image styles  her...
+
+  .opacity-img {
+    // when the image is uploading, the opacity is set to 0.6 ...
+    opacity: 0.6;
+    position: relative;
+    width: 6rem;
+    height: 6rem;
+    cursor: pointer;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    overflow: hidden;
+    border-radius: 50%;
+    img {
+      width: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #ccc;
+    }
+  }
+
   .profile-img {
+    position: relative;
     width: 6rem;
     height: 6rem;
     cursor: pointer;
