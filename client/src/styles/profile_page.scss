@@ -72,22 +72,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10rem;
 
   .profile_delete_btn {
-    // display: inline-block;
-
-    padding: 15px;
-    border-radius: 15px;
-    margin-top: 2rem;
-    background: $ButtonRed;
-    color: $black;
-    border: 1px solid $red;
+    display: inline-block;
+    margin-top: 10px;
+    border-radius: 10px;
+    color: $red;
     cursor: pointer;
-    transition: background-color 0.5s ease;
 
     &:hover {
-      background: $ButtonRedAlter;
+      color: #900603;
     }
   }
 }
@@ -105,7 +99,5 @@
 
   .profile-d {
     flex-direction: column;
-    margin-bottom: 10px;
-    gap: 0px;
   }
 }
