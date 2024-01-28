@@ -29,3 +29,37 @@ body::-webkit-scrollbar-thumb {
   background: $linearGradient;
   outline: 1px solid $gradient;
 }
+
+//error message
+
+.error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 12px;
+  width: 300px;
+  padding: 15px;
+  border-radius: 10px;
+  color: $red;
+  background: $red-200;
+}
+
+// success message
+
+.success-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 12px;
+  width: 300px;
+  padding: 15px;
+  border-radius: 10px;
+  color: $green;
+  background: $green-200;
+}

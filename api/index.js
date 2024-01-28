@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { db } from './utils/dbConnect.js';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
@@ -21,7 +22,6 @@ app.listen(process.env.PORT || 3000, () => {
 // Routes import here....
 import userRoutes from './routes/user.routes.js';
 import authRoutes from './routes/auth.routes.js';
-import cookieParser from 'cookie-parser';
 
 //Routes Uses here....
 app.use('/api/user', userRoutes);

@@ -118,23 +118,6 @@
   }
 }
 
-//error message
-
-.error-message {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  margin-top: 10px;
-  width: 300px;
-  padding: 15px;
-  border-radius: 10px;
-  color: $red;
-  background: $red-200;
-}
-
 // loading spinner
 
 .lds-ripple {
