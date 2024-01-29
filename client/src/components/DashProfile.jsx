@@ -13,10 +13,11 @@ import {
   updateStart,
   updateSuccess,
   updateFailure,
+  signoutSuccess,
 } from '../redux/user/userSlice';
 
 const DashProfile = () => {
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser, error, loading } = useSelector((state) => state.user);
   const [imageFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const [imageFileUploadProgress, setImageFileUploadProgress] = useState(null);
@@ -116,6 +117,22 @@ const DashProfile = () => {
     }
   };
 
+  const handleSignOut = async () => {
+    try {
+      const res = await fetch('/api/user/signout', {
+        method: 'POST',
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data.message);
+      } else {
+        dispatch(signoutSuccess());
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className='profile_container'>
@@ -210,7 +227,9 @@ const DashProfile = () => {
           </form>
           <div className='profile-d'>
             <span className='profile_delete_btn'>Delete Account</span>
-            <span className='profile_delete_btn'>Sign Out</span>
+            <span className='profile_delete_btn' onClick={handleSignOut}>
+              Sign Out
+            </span>
           </div>
         </div>
         {updateUserSuccess && (
