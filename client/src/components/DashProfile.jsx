@@ -7,6 +7,7 @@ import {
   uploadBytesResumable,
 } from 'firebase/storage';
 import { app } from '../firebase';
+import { TiDelete } from 'react-icons/ti';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import {
@@ -14,6 +15,9 @@ import {
   updateSuccess,
   updateFailure,
   signoutSuccess,
+  deleteStart,
+  deleteSuccess,
+  deleteFailure,
 } from '../redux/user/userSlice';
 
 const DashProfile = () => {
@@ -25,6 +29,7 @@ const DashProfile = () => {
   const [imageFileUploading, setImageFileUploading] = useState(false);
   const [updateUserSuccess, setUpdateUserSuccess] = useState(null);
   const [updateUserError, setUpdateUserError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({});
 
   const filePickerRef = useRef();
@@ -117,6 +122,28 @@ const DashProfile = () => {
     }
   };
 
+  // delete the user function here...
+  const handleDeleteAccount = async () => {
+    setShowModal(false);
+    try {
+      dispatch(deleteStart());
+      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        dispatch(deleteFailure(data.message));
+      } else {
+        dispatch(deleteSuccess(data));
+        dispatch(signoutSuccess());
+      }
+    } catch (error) {
+      dispatch(deleteFailure(error.message));
+      console.log(error.message);
+    }
+  };
+
+  // signout functions here....
   const handleSignOut = async () => {
     try {
       const res = await fetch('/api/user/signout', {
@@ -226,7 +253,13 @@ const DashProfile = () => {
             </button>
           </form>
           <div className='profile-d'>
-            <span className='profile_delete_btn'>Delete Account</span>
+            <span
+              className='profile_delete_btn'
+              onClick={() => {
+                setShowModal(true);
+              }}>
+              Delete Account
+            </span>
             <span className='profile_delete_btn' onClick={handleSignOut}>
               Sign Out
             </span>
@@ -242,7 +275,36 @@ const DashProfile = () => {
             <p>{updateUserError}</p>
           </div>
         )}
+        {error && (
+          <div className='error-message'>
+            <p>{error}</p>
+          </div>
+        )}
       </div>
+
+      {showModal && (
+        <div className='modal'>
+          <div className='modal-content'>
+            <TiDelete />
+            <h1>Delete Account</h1>
+            <p>Are you sure you want to delete your account?</p>
+            <button
+              className='modal-btn'
+              onClick={() => {
+                setShowModal(false);
+              }}>
+              No, cancel
+            </button>
+            <button
+              className='modal-btn'
+              onClick={() => {
+                handleDeleteAccount();
+              }}>
+              Yes, I'm sure
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 };

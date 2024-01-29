@@ -12,7 +12,7 @@ const router = express.Router();
 router
   .get('/', testapi)
   .put('/update/:userId', VerifyUser, updateUser)
-  .delete('/update/:userId', VerifyUser, DeleteUser)
+  .delete('/delete/:userId', VerifyUser, DeleteUser)
   .post('/signout', SignOut);
 
 export default router;
