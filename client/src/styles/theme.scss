@@ -54,4 +54,12 @@
   .footer-logo {
     color: $white;
   }
+
+  // modal here...
+  .modal {
+    .modal-content {
+      background-color: $dark;
+      color: $white;
+    }
+  }
 }

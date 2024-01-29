@@ -280,31 +280,33 @@ const DashProfile = () => {
             <p>{error}</p>
           </div>
         )}
-      </div>
-
-      {showModal && (
-        <div className='modal'>
-          <div className='modal-content'>
-            <TiDelete />
-            <h1>Delete Account</h1>
-            <p>Are you sure you want to delete your account?</p>
-            <button
-              className='modal-btn'
-              onClick={() => {
-                setShowModal(false);
-              }}>
-              No, cancel
-            </button>
-            <button
-              className='modal-btn'
-              onClick={() => {
-                handleDeleteAccount();
-              }}>
-              Yes, I'm sure
-            </button>
+        {/* // modal here ... */}
+        {showModal && (
+          <div className='modal'>
+            <div className='modal-content'>
+              <TiDelete className='modal-logo' />
+              <h1>Delete Account</h1>
+              <p>Are you sure you want to delete your account?</p>
+              <div className='modal-btn-container'>
+                <button
+                  className='modal-btn'
+                  onClick={() => {
+                    handleDeleteAccount();
+                  }}>
+                  Yes, I'm sure
+                </button>
+                <button
+                  className='modal-btn'
+                  onClick={() => {
+                    setShowModal(false);
+                  }}>
+                  No, cancel
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 };
