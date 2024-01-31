@@ -5,6 +5,7 @@ import { FaMoon, FaSun } from 'react-icons/fa';
 import { RxHamburgerMenu, RxCross1 } from 'react-icons/rx';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../redux/theme/themeSlice';
+import { signoutSuccess } from '../redux/user/userSlice';
 
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -14,6 +15,23 @@ const Header = () => {
 
   const { currentUser } = useSelector((state) => state.user);
   const { theme } = useSelector((state) => state.theme);
+
+  // signout functions here....
+  const handleSignOut = async () => {
+    try {
+      const res = await fetch('/api/user/signout', {
+        method: 'POST',
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data.message);
+      } else {
+        dispatch(signoutSuccess());
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <nav className='nav-main'>
@@ -80,7 +98,7 @@ const Header = () => {
               Profile
             </Link>
             <hr />
-            <Link className='dropdown-link' to='/sign-out'>
+            <Link className='dropdown-link' onClick={handleSignOut}>
               Sign Out
             </Link>
           </div>
