@@ -51,7 +51,10 @@ export const signInHandler = async (req, res, next) => {
     if (!ValidPassword) {
       return next(ErrorHandle(400, 'Invalid credentials'));
     }
-    const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
+    const token = jwt.sign(
+      { id: validUser._id, isAdmin: validUser.isAdmin },
+      process.env.JWT_SECRET
+    );
 
     // sending the rest of the user but not the password...
     const { password: pass, ...rest } = validUser._doc;
@@ -76,7 +79,10 @@ export const googleAuthHandler = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: email });
     if (user) {
-      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+      const token = jwt.sign(
+        { id: user._id, isAdmin: user.isAdmin },
+        process.env.JWT_SECRET
+      );
       const { password, ...rest } = user._doc;
       res
         .status(200)
@@ -98,7 +104,10 @@ export const googleAuthHandler = async (req, res, next) => {
         profilePicture: googlePhotoUrl,
       });
       await newUser.save();
-      const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
+      const token = jwt.sign(
+        { id: newUser._id, isAdmin: newUser.isAdmin },
+        process.env.JWT_SECRET
+      );
       const { password, ...rest } = newUser._doc;
       res
         .status(200)
