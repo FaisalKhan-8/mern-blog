@@ -62,4 +62,28 @@
       color: $white;
     }
   }
+
+  // sidebar here...
+  .sidebar {
+    .sidebar-item {
+      .sidebar-link {
+        color: $white;
+
+        &:hover {
+          color: $black;
+        }
+      }
+    }
+  }
+
+  // crate post ...
+  .create-post-file-container {
+    button {
+      color: $white;
+    }
+  }
+
+  // react quill...
+  .ql-editor .ql-blank {
+  }
 }

@@ -1,0 +1,210 @@
+.create_post_container {
+  padding: 10px;
+  max-width: 48rem;
+  margin: 0 auto;
+  min-height: 100vh;
+
+  h1 {
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  // form css...
+  .create_post_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    .create_post_div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-top: 20px;
+
+      input {
+        width: 35rem;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        font-family: 'Poppins', sans-serif;
+
+        &:focus {
+          outline: 1px solid $gradient;
+        }
+      }
+      select {
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        font-family: 'Poppins', sans-serif;
+        &:focus {
+          outline: 1px solid $gradient;
+        }
+
+        option {
+          padding: 10px;
+          border-radius: 10px;
+          border: 1px solid #ccc;
+          font-family: 'Poppins', sans-serif;
+        }
+      }
+    }
+  }
+
+  .create-post-file-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    border: 1px dotted rgb(20 184 166);
+    border-radius: 5px;
+    padding: 10px;
+
+    input {
+      width: 50%;
+      border-radius: 5px;
+      background-color: $gray;
+      color: $black;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    input[type='file']::file-selector-button {
+      border: 1px solid $gray;
+
+      padding: 8px;
+      border-radius: 0.2em;
+      background-color: $black;
+      color: $white;
+      transition: 1s;
+    }
+
+    input[type='file']::file-selector-button:hover {
+      background-color: $white;
+      color: $black;
+      border: 1px solid #00cec9;
+    }
+
+    button {
+      padding: 8px;
+      border-radius: 5px;
+      background-color: transparent;
+      border: 1px solid $gradient;
+      cursor: pointer;
+    }
+  }
+
+  // react quill css here...
+  .react-quill {
+    height: 18rem;
+    width: 100%;
+  }
+
+  .ql-editor {
+    font-size: 1.05rem;
+  }
+}
+
+.create_post_btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 40px;
+  border-radius: 10px;
+  background: $ButtonRedAlter;
+  border: 1px solid #ccc;
+  font-family: 'Poppins', sans-serif;
+  color: $white;
+  cursor: pointer;
+  transition: background 0.1s ease;
+  &:hover {
+    color: $black;
+    background: transparent;
+    border: 1px solid $red;
+  }
+}
+
+// media queries
+
+@media (max-width: 745px) {
+  .create_post_container {
+    .create_post_form {
+      .create_post_div {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .create_post_div {
+        input {
+          width: 18rem;
+        }
+      }
+
+      select {
+        width: 18rem;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        font-family: 'Poppins', sans-serif;
+        &:focus {
+          outline: 1px solid $gradient;
+        }
+
+        option {
+          padding: 10px;
+          border-radius: 10px;
+          border: 1px solid #ccc;
+          font-family: 'Poppins', sans-serif;
+        }
+      }
+
+      .create-post-file-container {
+        width: 300px;
+        gap: 20px;
+      }
+    }
+  }
+}
+// @media (max-width: 545px) {
+//   .create_post_container {
+//     .create_post_form {
+//       .create_post_div {
+//         flex-direction: column;
+//         gap: 10px;
+//       }
+
+//       .create_post_div {
+//         input {
+//           width: 18rem;
+//         }
+//       }
+
+//       select {
+//         width: 18rem;
+//         padding: 10px;
+//         border-radius: 10px;
+//         border: 1px solid #ccc;
+//         font-family: 'Poppins', sans-serif;
+//         &:focus {
+//           outline: 1px solid $gradient;
+//         }
+
+//         option {
+//           padding: 10px;
+//           border-radius: 10px;
+//           border: 1px solid #ccc;
+//           font-family: 'Poppins', sans-serif;
+//         }
+//       }
+
+//       .create-post-file-container {
+//         width: 300px;
+//         gap: 20px;
+//       }
+//     }
+//   }
+// }

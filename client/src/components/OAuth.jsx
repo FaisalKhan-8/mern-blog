@@ -35,6 +35,7 @@ const OAuth = () => {
         navigate('/');
       }
     } catch (error) {
+      // TODO: Handle error properly removed in production version
       console.log(error);
     }
   };

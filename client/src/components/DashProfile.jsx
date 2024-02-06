@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   getDownloadURL,
   getStorage,
@@ -248,9 +249,23 @@ const DashProfile = () => {
               />
             </div>
 
-            <button type='submit' className='profile_update_btn'>
-              Update
+            <button
+              type='submit'
+              className={
+                loading || imageFileUploading
+                  ? 'loading-btn'
+                  : 'profile_update_btn'
+              }>
+              {loading || imageFileUploading ? 'Loading...' : 'Update'}
             </button>
+
+            {currentUser.isAdmin && (
+              <Link to={'/create-post'}>
+                <button type='button' className='Admin_create_btn'>
+                  Create a post
+                </button>
+              </Link>
+            )}
           </form>
           <div className='profile-d'>
             <span
