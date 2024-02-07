@@ -10,12 +10,16 @@ import {
 import { app } from '../firebase';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { useNavigate } from 'react-router-dom';
 
 const CreatePost = () => {
   const [file, setFile] = useState(null);
   const [imageFileUploadProgress, setImageFileUploadProgress] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(null);
   const [formData, setFormData] = useState({});
+  const [publishError, setPublishError] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleUploadImage = async () => {
     try {
@@ -54,14 +58,50 @@ const CreatePost = () => {
     }
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch('/api/post/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setPublishError(data.message);
+        return;
+      }
+
+      if (res.ok) {
+        setPublishError(null);
+        navigate(`/post/${data.slug}`);
+      }
+    } catch (error) {
+      setPublishError('Something went wrong');
+    }
+  };
+
   return (
     <div className='create_post_container'>
       <h1>Create a post</h1>
 
-      <form className='create_post_form'>
+      <form className='create_post_form' onSubmit={handleSubmit}>
         <div className='create_post_div'>
-          <input type='text' id='title' placeholder='Title' required />
-          <select>
+          <input
+            type='text'
+            id='title'
+            placeholder='Title'
+            required
+            onChange={(e) =>
+              setFormData({ ...formData, title: e.target.value })
+            }
+          />
+          <select
+            onChange={(e) =>
+              setFormData({ ...formData, category: e.target.value })
+            }>
             <option value='uncategorized'>Select a category</option>
             <option value='javascript'>JavaScript</option>
             <option value='nextjs'>NextJS</option>
@@ -94,7 +134,7 @@ const CreatePost = () => {
         </div>
 
         {imageUploadError && (
-          <div className='error-message'>
+          <div className='error-message '>
             <p>{imageUploadError}</p>
           </div>
         )}
@@ -106,11 +146,23 @@ const CreatePost = () => {
           theme='snow'
           placeholder='Write something...'
           className='react-quill'
+          required
+          onChange={(value) => {
+            setFormData({
+              ...formData,
+              content: value,
+            });
+          }}
         />
 
         <button type='submit' className='create_post_btn'>
           Publish
         </button>
+        {publishError && (
+          <div className='error-message'>
+            <p>{publishError}</p>
+          </div>
+        )}
       </form>
     </div>
   );
