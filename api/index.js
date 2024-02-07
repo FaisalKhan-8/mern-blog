@@ -22,10 +22,12 @@ app.listen(process.env.PORT || 3000, () => {
 // Routes import here....
 import userRoutes from './routes/user.routes.js';
 import authRoutes from './routes/auth.routes.js';
+import postRoutes from './routes/post.routes.js';
 
 //Routes Uses here....
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/post', postRoutes);
 
 // Error middleware....
 app.use((err, req, res, next) => {

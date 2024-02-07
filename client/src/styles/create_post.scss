@@ -72,16 +72,17 @@
       background-color: $gray;
       color: $black;
       font-family: 'Poppins', sans-serif;
+      cursor: pointer;
     }
 
     input[type='file']::file-selector-button {
       border: 1px solid $gray;
-
       padding: 8px;
       border-radius: 0.2em;
       background-color: $black;
       color: $white;
       transition: 1s;
+      cursor: pointer;
     }
 
     input[type='file']::file-selector-button:hover {
