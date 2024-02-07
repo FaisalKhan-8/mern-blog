@@ -83,6 +83,13 @@
     }
   }
 
+  .create_post_btn {
+    color: $black;
+    &:hover {
+      color: $white;
+    }
+  }
+
   // react quill...
   .ql-editor .ql-blank {
   }
