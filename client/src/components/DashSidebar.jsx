@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { HiArrowSmRight, HiUser } from 'react-icons/hi';
+import { HiArrowSmRight, HiDocumentText, HiUser } from 'react-icons/hi';
 import { signoutSuccess } from '../redux/user/userSlice';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const DashSidebar = () => {
   const dispatch = useDispatch();
+  const { currentUser } = useSelector((state) => state.user);
 
   // signout functions here....
   const handleSignOut = async () => {
@@ -33,9 +34,17 @@ const DashSidebar = () => {
             <div className='sidebar-elem'>
               <HiUser className='sidebar-icon' />
               Profile
-              <label>user</label>
+              <label> {currentUser.isAdmin ? 'Admin' : 'User'}</label>
             </div>
           </Link>
+          {currentUser.isAdmin && (
+            <Link to='/dashboard?tab=posts' className='sidebar-link'>
+              <div className='sidebar-elem'>
+                <HiDocumentText className='sidebar-icon' />
+                Posts
+              </div>
+            </Link>
+          )}
           <Link className='sidebar-link' onClick={handleSignOut}>
             <div className='sidebar-elem'>
               <HiArrowSmRight className='sidebar-icon' />

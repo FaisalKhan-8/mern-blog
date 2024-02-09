@@ -1,0 +1,20 @@
+.dash_post_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 10rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+// media queries
+@media (max-width: 545px) {
+  .dash_post_container {
+    margin-top: 2rem;
+    display: flex;
+    margin-left: 0rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
