@@ -37,14 +37,14 @@ export const getPosts = async (req, res, next) => {
     const limit = parseInt(req.query.limit) || 9;
     const sortDirection = req.query.order === 'asc' ? 1 : -1;
     const posts = await Post.find({
-      ...(req.query.userId && { userId: req.userId }),
-      ...(req.query.category && { category: req.category }),
-      ...(req.query.postId && { _id: req.postId }),
+      ...(req.query.userId && { userId: req.query.userId }),
+      ...(req.query.category && { category: req.query.category }),
+      ...(req.query.slug && { slug: req.query.slug }),
+      ...(req.query.postId && { _id: req.query.postId }),
       ...(req.query.searchTerm && {
         $or: [
-          //: i means is a search term is lowercase or not does not matter.
-          { title: { $regex: req.searchTerm, $options: 'i' } },
-          { content: { $regex: req.searchTerm, $options: 'i' } },
+          { title: { $regex: req.query.searchTerm, $options: 'i' } },
+          { content: { $regex: req.query.searchTerm, $options: 'i' } },
         ],
       }),
     })
@@ -72,7 +72,6 @@ export const getPosts = async (req, res, next) => {
       totalPosts,
       lastMonthPosts,
     });
-    console.log(posts);
   } catch (error) {
     next(error);
   }

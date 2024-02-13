@@ -68,3 +68,19 @@ body::-webkit-scrollbar-thumb {
   color: $green;
   background: $green-200;
 }
+
+// scroll bar for dashposts
+
+.dash_post_container::-webkit-scrollbar {
+  width: 0.5rem;
+  // border-radius: 15px;
+}
+
+.dash_post_container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.dash_post_container::-webkit-scrollbar-thumb {
+  background: $linearGradient;
+  outline: 1px solid $gradient;
+}
