@@ -149,7 +149,7 @@ const DashPosts = () => {
         <div className='modal'>
           <div className='modal-content'>
             <TiDelete className='modal-logo' />
-            <h1>Delete Account</h1>
+            <h1>Delete Post</h1>
             <p>Are you sure you want to delete this post?</p>
             <div className='modal-btn-container'>
               <button
