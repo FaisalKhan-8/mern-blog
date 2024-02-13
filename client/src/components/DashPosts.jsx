@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const DashPosts = () => {
   const [userPosts, setUserPosts] = useState([]);
+  const [showMore, setShowMore] = useState(true);
 
   const { currentUser } = useSelector((state) => state.user);
 
@@ -14,9 +15,9 @@ const DashPosts = () => {
         const data = await res.json();
         if (res.ok) {
           setUserPosts(data.posts);
-          // if (data.posts.length < 9) {
-          //   setShowMore(false);
-          // }
+          if (data.posts.length < 9) {
+            setShowMore(false);
+          }
         }
       } catch (error) {
         console.log(error.message);
@@ -26,6 +27,24 @@ const DashPosts = () => {
       fetchPosts();
     }
   }, [currentUser._id]);
+
+  const handleShowMore = async () => {
+    const startIndex = userPosts.length;
+    try {
+      const res = await fetch(
+        `/api/post/getposts?userId=${currentUser._id}&startIndex=${startIndex}`
+      );
+      const data = await res.json();
+      if (res.ok) {
+        setUserPosts((prev) => [...userPosts, ...data.posts]);
+        if (data.posts.length < 9) {
+          setShowMore(false);
+        }
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <div className='dash_post_container'>
@@ -77,6 +96,14 @@ const DashPosts = () => {
               </tr>
             ))}
           </table>
+          {showMore && (
+            <button
+              onClick={handleShowMore}
+              type='button'
+              className='dash_post_show_more_btn'>
+              Show More
+            </button>
+          )}
         </>
       ) : (
         <p>You have no posts yet!</p>
