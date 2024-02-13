@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
+import { TiDelete } from 'react-icons/ti';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const DashPosts = () => {
   const [userPosts, setUserPosts] = useState([]);
   const [showMore, setShowMore] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [PostIdToDelete, setPostIdToDelete] = useState('');
+  const [DeleteMessage, setDeleteMessage] = useState('');
 
   const { currentUser } = useSelector((state) => state.user);
 
@@ -35,12 +39,37 @@ const DashPosts = () => {
         `/api/post/getposts?userId=${currentUser._id}&startIndex=${startIndex}`
       );
       const data = await res.json();
+
       if (res.ok) {
         setUserPosts((prev) => [...userPosts, ...data.posts]);
         if (data.posts.length < 9) {
           setShowMore(false);
         }
       }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const handleDeletePost = async () => {
+    setShowModal(false);
+    try {
+      const res = await fetch(
+        `/api/post/deletepost/${PostIdToDelete}/${currentUser._id}`,
+        {
+          method: 'DELETE',
+        }
+      );
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.log(data.message);
+      } else {
+        setUserPosts((prev) => {
+          return prev.filter((post) => post._id !== PostIdToDelete);
+        });
+      }
+      setDeleteMessage(data);
     } catch (error) {
       console.log(error.message);
     }
@@ -82,7 +111,13 @@ const DashPosts = () => {
                 </td>
                 <td className='td-content'>{post.category}</td>
                 <td className='td-content'>
-                  <span type='button' className='dash_post_delete_btn'>
+                  <span
+                    onClick={() => {
+                      setShowModal(true);
+                      setPostIdToDelete(post._id);
+                    }}
+                    type='button'
+                    className='dash_post_delete_btn'>
                     Delete
                   </span>
                 </td>
@@ -107,6 +142,39 @@ const DashPosts = () => {
         </>
       ) : (
         <p>You have no posts yet!</p>
+      )}
+
+      {/* // modal here ... */}
+      {showModal && (
+        <div className='modal'>
+          <div className='modal-content'>
+            <TiDelete className='modal-logo' />
+            <h1>Delete Account</h1>
+            <p>Are you sure you want to delete this post?</p>
+            <div className='modal-btn-container'>
+              <button
+                className='modal-btn'
+                onClick={() => {
+                  handleDeletePost();
+                }}>
+                Yes, I'm sure
+              </button>
+              <button
+                className='modal-btn'
+                onClick={() => {
+                  setShowModal(false);
+                }}>
+                No, cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {DeleteMessage && (
+        <div className='success-message'>
+          <p>{DeleteMessage}</p>
+        </div>
       )}
     </div>
   );
