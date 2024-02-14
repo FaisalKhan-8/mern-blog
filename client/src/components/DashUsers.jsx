@@ -49,6 +49,27 @@ const DashUsers = () => {
     }
   };
 
+  const handleDeleteUser = async () => {
+    setShowModal(false);
+    try {
+      const res = await fetch(`/api/user/delete/${userIdToDelete}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+        setUsers((prev) => {
+          return prev.filter((user) => user._id !== userIdToDelete);
+        });
+      } else {
+        console.log(data.message);
+      }
+      setDeleteMessage(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div className='dash_user_container'>
       {currentUser.isAdmin && users.length > 0 ? (
