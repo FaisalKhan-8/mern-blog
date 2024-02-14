@@ -81,14 +81,14 @@ const DashPosts = () => {
         <>
           <table className='main-table'>
             <tr className='table-row'>
-              <th>Date updated</th>
-              <th>Post image</th>
-              <th>Post title</th>
-              <th>Category</th>
-              <th>Delete</th>
-              <th>
+              <thead>Date updated</thead>
+              <thead>Post image</thead>
+              <thead>Post title</thead>
+              <thead>Category</thead>
+              <thead>Delete</thead>
+              <thead>
                 <span>Edit</span>
-              </th>
+              </thead>
             </tr>
             {userPosts.map((post) => (
               <tr key={post._id} className='table-row'>
