@@ -4,6 +4,7 @@ import {
   testapi,
   SignOut,
   DeleteUser,
+  getUsers,
 } from '../controllers/user.controller.js';
 import { VerifyUser } from '../utils/VerifyUser.js';
 
@@ -13,6 +14,7 @@ router
   .get('/', testapi)
   .put('/update/:userId', VerifyUser, updateUser)
   .delete('/delete/:userId', VerifyUser, DeleteUser)
-  .post('/signout', SignOut);
+  .post('/signout', SignOut)
+  .get('/getusers', VerifyUser, getUsers);
 
 export default router;
