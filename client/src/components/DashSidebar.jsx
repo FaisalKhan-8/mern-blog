@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { HiArrowSmRight, HiDocumentText, HiUser } from 'react-icons/hi';
+import {
+  HiArrowSmRight,
+  HiDocumentText,
+  HiOutlineUserGroup,
+  HiUser,
+} from 'react-icons/hi';
 import { signoutSuccess } from '../redux/user/userSlice';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -42,6 +47,14 @@ const DashSidebar = () => {
               <div className='sidebar-elem'>
                 <HiDocumentText className='sidebar-icon' />
                 Posts
+              </div>
+            </Link>
+          )}
+          {currentUser.isAdmin && (
+            <Link to='/dashboard?tab=users' className='sidebar-link'>
+              <div className='sidebar-elem'>
+                <HiOutlineUserGroup className='sidebar-icon' />
+                Users
               </div>
             </Link>
           )}
