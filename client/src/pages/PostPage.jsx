@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import CallToAction from '../components/CallToAction';
 
 const PostPage = () => {
   const { postSlug } = useParams();
@@ -66,6 +67,9 @@ const PostPage = () => {
       <div
         className='post-content'
         dangerouslySetInnerHTML={{ __html: post && post.content }}></div>
+      <div className='action_container'>
+        <CallToAction />
+      </div>
     </main>
   );
 };
