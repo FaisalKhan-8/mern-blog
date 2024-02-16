@@ -101,4 +101,17 @@
   .td-link {
     color: $white;
   }
+
+  // comment section...
+  .comment_form {
+    .comment_form_item {
+      .comment_button {
+        color: $white;
+        &:hover {
+          border: 1px solid $white;
+          color: $gradient;
+        }
+      }
+    }
+  }
 }

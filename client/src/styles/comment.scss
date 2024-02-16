@@ -50,10 +50,10 @@
       font-family: 'Poppins', sans-serif;
       cursor: pointer;
       background-color: transparent;
-      color: $white;
-      transition: all 0.5s ease;
+      color: $black;
+      transition: all 0.5s ease-in-out;
       &:hover {
-        border: 1px solid $white;
+        border: 1px solid $black;
         color: $gradient;
       }
     }
