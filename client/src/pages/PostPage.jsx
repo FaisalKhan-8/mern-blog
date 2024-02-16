@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import CallToAction from '../components/CallToAction';
+import Comment from '../components/Comment';
 
 const PostPage = () => {
   const { postSlug } = useParams();
@@ -70,6 +71,7 @@ const PostPage = () => {
       <div className='action_container'>
         <CallToAction />
       </div>
+      <Comment postId={post._id} />
     </main>
   );
 };
