@@ -1,3 +1,5 @@
+// comments form here...
+
 .comment_container {
   max-width: 42rem;
   margin: 0 auto;
@@ -109,4 +111,86 @@
   border-radius: 3px;
   color: $red;
   background: $red-200;
+}
+
+// getting comments styles here...
+.comment_no_comments {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 3px;
+  color: $red;
+  background: $red-200;
+}
+
+.comments_text_con {
+  font-size: 14px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .comments_p {
+    border: 1px solid $gray;
+    padding: 8px;
+  }
+}
+
+.comment_user {
+  flex-shrink: 0;
+  margin-right: 15px;
+  .comment_img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: $gray;
+  }
+}
+
+.comment_span {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'Poppins', sans-serif;
+}
+
+.comment-from-now {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: $gray;
+  font-family: 'Poppins', sans-serif;
+}
+
+.comment-content-container {
+  flex: 1;
+}
+.content-para {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+  color: $gray;
+}
+
+.comment-text-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.comment-main-container {
+  display: flex;
+  padding: 12px;
+  border-bottom: 1px solid #ececec;
 }
