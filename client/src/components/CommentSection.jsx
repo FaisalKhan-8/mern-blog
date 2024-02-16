@@ -1,12 +1,43 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const Comment = (postId) => {
+const CommentSection = ({ postId }) => {
   const [comment, setComment] = useState('');
+  const [commentError, setCommentError] = useState('');
+
   const { currentUser } = useSelector((state) => state.user);
 
-  const handleSubmit = async (e) => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (comment.length > 200) {
+      setCommentError('Comment is too long');
+      return;
+    }
+    if (!comment) {
+      setCommentError('Please enter a comment');
+      return;
+    }
+    try {
+      const res = await fetch('/api/comment/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          content: comment,
+          postId,
+          userId: currentUser._id,
+        }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setComment('');
+      }
+    } catch (error) {
+      setCommentError(error.message);
+    }
+  };
 
   return (
     <div className='comment_container'>
@@ -45,6 +76,12 @@ const Comment = (postId) => {
             onChange={(e) => setComment(e.target.value)}
             value={comment}
           />
+          {/* // error message handle here.. */}
+          {commentError && (
+            <div className='error-message-comment'>
+              <p>{commentError}</p>
+            </div>
+          )}
           <div className='comment_form_item'>
             <p>{200 - comment.length} characters remaining</p>
             <button
@@ -59,4 +96,4 @@ const Comment = (postId) => {
   );
 };
 
-export default Comment;
+export default CommentSection;

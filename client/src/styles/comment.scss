@@ -8,6 +8,7 @@
     font-size: 12px;
     text-decoration: none;
     color: #0d9488;
+    font-family: 'Poppins', sans-serif;
     &:hover {
       text-decoration: underline;
     }
@@ -17,6 +18,7 @@
 .comment_form {
   border: 1px solid #0d9488;
   border-radius: 5px;
+  margin-top: 10px;
   padding: 10px;
 
   .comment_textarea {
@@ -25,6 +27,7 @@
     border: 1px solid #0d9488;
     border-radius: 5px;
     margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
   }
 
   .comment_form_item {
@@ -37,12 +40,14 @@
     p {
       color: $gray;
       font-size: 14px;
+      font-family: 'Poppins', sans-serif;
     }
     .comment_button {
       border: 1px solid $gradient;
       border-radius: 5px;
       padding: 10px;
       font-size: 14px;
+      font-family: 'Poppins', sans-serif;
       cursor: pointer;
       background-color: transparent;
       color: $white;
@@ -88,4 +93,20 @@
     border-radius: 50%;
     object-fit: cover;
   }
+}
+
+//error message...
+.error-message-comment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 3px;
+  color: $red;
+  background: $red-200;
 }
