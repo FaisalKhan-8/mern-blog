@@ -213,6 +213,7 @@
       color: $red;
     }
   }
+
   .Liked-Button {
     color: $red !important;
   }
@@ -221,5 +222,102 @@
     color: $gray;
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
+  }
+
+  .comment-edit-button {
+    background-color: transparent;
+    border: none;
+    color: $gray;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    padding: 5px;
+
+    &:hover {
+      color: $green;
+    }
+  }
+
+  .comment-delete-button {
+    background-color: transparent;
+    border: none;
+    color: $gray;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    padding: 5px;
+
+    &:hover {
+      color: $red;
+    }
+  }
+}
+
+.comment_textarea-edit {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+
+  &:focus {
+    outline: 2px solid $gradient;
+  }
+}
+
+.comment_edit_item {
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+  align-items: center;
+
+  .btn-edit {
+    background-image: linear-gradient(
+      to right,
+      #348f50 0%,
+      #56b4d3 51%,
+      #348f50 100%
+    );
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    display: block;
+  }
+
+  .btn-edit:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .btn-delete {
+    background-image: linear-gradient(
+      to right,
+      #8f3434 0%,
+      #d39f56 51%,
+      #8f3434 100%
+    );
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    display: block;
+  }
+
+  .btn-delete:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
   }
 }
