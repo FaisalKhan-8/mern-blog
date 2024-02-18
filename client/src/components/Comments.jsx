@@ -4,7 +4,7 @@ import { FaThumbsUp, FaEdit } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
 import { useSelector } from 'react-redux';
 
-const Comments = ({ comment, onLike, onEdit }) => {
+const Comments = ({ comment, onLike, onEdit, onDelete }) => {
   const [user, setUser] = useState({});
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(comment.content);
@@ -123,7 +123,7 @@ const Comments = ({ comment, onLike, onEdit }) => {
                     </button>
                     <button
                       type='button'
-                      // onClick={() => onDelete(comment._id)}
+                      onClick={() => onDelete(comment._id)}
                       className='comment-delete-button'>
                       <MdDeleteForever />
                     </button>

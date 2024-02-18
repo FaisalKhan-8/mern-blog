@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Comments from './Comments';
+import { TiDelete } from 'react-icons/ti';
 
 const CommentSection = ({ postId }) => {
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
   const [commentError, setCommentError] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [commentToDelete, setCommentToDelete] = useState(null);
 
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
@@ -98,6 +101,25 @@ const CommentSection = ({ postId }) => {
     );
   };
 
+  const handleDelete = async (commentId) => {
+    setShowModal(false);
+    try {
+      if (!currentUser) {
+        navigate('/sign-in');
+        return;
+      }
+      const res = await fetch(`/api/comment/deleteComment/${commentId}`, {
+        method: 'DELETE',
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setComments(comments.filter((comment) => comment._id !== commentId));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className='comment_container'>
       {currentUser ? (
@@ -119,7 +141,7 @@ const CommentSection = ({ postId }) => {
           <Link
             className='comment_link_signin'
             to='/sign-in'>
-            Sign In=
+            Sign In
           </Link>
         </div>
       )}
@@ -167,10 +189,45 @@ const CommentSection = ({ postId }) => {
               comment={comment}
               onLike={handleLike}
               onEdit={handleEdit}
+              onDelete={(commentId) => {
+                setShowModal(true);
+                setCommentToDelete(commentId);
+              }}
             />
           ))}
         </>
       )}
+
+      {/* // modal here ... */}
+      {showModal && (
+        <div className='modal comment-modal'>
+          <div className='modal-content'>
+            <TiDelete className='modal-logo' />
+            <h1>Delete Comment</h1>
+            <p>Are you sure you want to delete this comment?</p>
+            <div className='modal-btn-container'>
+              <button
+                className='modal-btn'
+                onClick={() => handleDelete(commentToDelete)}>
+                Yes, I'm sure
+              </button>
+              <button
+                className='modal-btn'
+                onClick={() => {
+                  setShowModal(false);
+                }}>
+                No, cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* {DeleteMessage && (
+        <div className='success-message'>
+          <p>{DeleteMessage}</p>
+        </div>
+      )} */}
     </div>
   );
 };

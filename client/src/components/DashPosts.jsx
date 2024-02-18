@@ -91,7 +91,9 @@ const DashPosts = () => {
               </thead>
             </tr>
             {userPosts.map((post) => (
-              <tr key={post._id} className='table-row'>
+              <tr
+                key={post._id}
+                className='table-row'>
                 <td className='td-content'>
                   {new Date(post.updatedAt).toLocaleDateString()}
                 </td>
@@ -105,7 +107,9 @@ const DashPosts = () => {
                   </Link>
                 </td>
                 <td className='td-content'>
-                  <Link className='td-link' to={`/post/${post.slug}`}>
+                  <Link
+                    className='td-link'
+                    to={`/post/${post.slug}`}>
                     {post.title}
                   </Link>
                 </td>
@@ -122,8 +126,12 @@ const DashPosts = () => {
                   </span>
                 </td>
                 <td className='td-content'>
-                  <Link className='td-link' to={`/update-post/${post._id}`}>
-                    <span type='button' className='dash_post_edit_btn'>
+                  <Link
+                    className='td-link'
+                    to={`/update-post/${post._id}`}>
+                    <span
+                      type='button'
+                      className='dash_post_edit_btn'>
                       Edit
                     </span>
                   </Link>
@@ -144,38 +152,34 @@ const DashPosts = () => {
         <p>You have no posts yet!</p>
       )}
 
-      {/* // modal here ... */}
-      {showModal && (
-        <div className='modal'>
-          <div className='modal-content'>
-            <TiDelete className='modal-logo' />
-            <h1>Delete Post</h1>
-            <p>Are you sure you want to delete this post?</p>
-            <div className='modal-btn-container'>
-              <button
-                className='modal-btn'
-                onClick={() => {
-                  handleDeletePost();
-                }}>
-                Yes, I'm sure
-              </button>
-              <button
-                className='modal-btn'
-                onClick={() => {
-                  setShowModal(false);
-                }}>
-                No, cancel
-              </button>
+      <>
+        {/* // modal here ... */}
+        {showModal && (
+          <div className='modal'>
+            <div className='modal-content'>
+              <TiDelete className='modal-logo' />
+              <h1>Delete Post</h1>
+              <p>Are you sure you want to delete this post?</p>
+              <div className='modal-btn-container'>
+                <button
+                  className='modal-btn'
+                  onClick={() => {
+                    handleDeletePost();
+                  }}>
+                  Yes, I'm sure
+                </button>
+                <button
+                  className='modal-btn'
+                  onClick={() => {
+                    setShowModal(false);
+                  }}>
+                  No, cancel
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-
-      {DeleteMessage && (
-        <div className='success-message'>
-          <p>{DeleteMessage}</p>
-        </div>
-      )}
+        )}
+      </>
     </div>
   );
 };
