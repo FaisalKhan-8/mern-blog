@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import { FaThumbsUp } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 
-const Comments = ({ comment }) => {
+const Comments = ({ comment, onLike }) => {
   const [user, setUser] = useState({});
+
+  const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
     const getUser = async () => {
@@ -38,6 +42,24 @@ const Comments = ({ comment }) => {
           </span>
         </div>
         <p className='content-para'>{comment.content}</p>
+        <div className='comment-like-container'>
+          <button
+            className={`comment-like-button ${
+              currentUser &&
+              comment.likes.includes(currentUser._id) &&
+              'Liked-Button'
+            }`}
+            type='button'
+            onClick={() => onLike(comment._id)}>
+            <FaThumbsUp />
+          </button>
+          <p>
+            {comment.numberOfLikes > 0 &&
+              comment.numberOfLikes +
+                ' ' +
+                (comment.numberOfLikes === 1 ? 'like' : 'likes')}
+          </p>
+        </div>
       </div>
     </div>
   );

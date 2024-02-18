@@ -125,9 +125,7 @@
   margin-top: 20px;
   width: 100%;
   padding: 10px;
-  border-radius: 3px;
   color: $red;
-  background: $red-200;
 }
 
 .comments_text_con {
@@ -193,4 +191,35 @@
   display: flex;
   padding: 12px;
   border-bottom: 1px solid #ececec;
+}
+
+.comment-like-container {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  gap: 10px;
+  border-top: 1px solid rgb(223, 223, 223);
+  max-width: fit-content;
+
+  .comment-like-button {
+    background-color: transparent;
+    border: none;
+    color: $gray;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      color: $red;
+    }
+  }
+  .Liked-Button {
+    color: $red !important;
+  }
+
+  p {
+    color: $gray;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+  }
 }

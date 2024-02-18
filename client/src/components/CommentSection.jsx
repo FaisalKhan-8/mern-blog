@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Comments from './Comments';
 
 const CommentSection = ({ postId }) => {
@@ -8,8 +8,7 @@ const CommentSection = ({ postId }) => {
   const [comments, setComments] = useState([]);
   const [commentError, setCommentError] = useState('');
 
-  console.log(comments);
-
+  const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
 
   const handleSubmit = async (e) => {
@@ -59,6 +58,37 @@ const CommentSection = ({ postId }) => {
     };
     getComments();
   }, [postId]);
+
+  const handleLike = async (commentId) => {
+    try {
+      if (!currentUser) {
+        navigate('/sign-in');
+        return;
+      }
+      const res = await fetch(`/api/comment/likeComment/${commentId}`, {
+        method: 'PUT',
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setComments(
+          comments.map((comment) => {
+            if (comment._id === commentId) {
+              return {
+                ...comment,
+                likes: data.likes,
+                numberOfLikes: data.likes.length,
+              };
+            } else {
+              return comment;
+            }
+          })
+        );
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className='comment_container'>
@@ -127,6 +157,7 @@ const CommentSection = ({ postId }) => {
             <Comments
               key={comment._id}
               comment={comment}
+              onLike={handleLike}
             />
           ))}
         </>
