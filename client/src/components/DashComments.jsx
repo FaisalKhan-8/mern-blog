@@ -3,23 +3,21 @@ import { TiDelete } from 'react-icons/ti';
 import { useSelector } from 'react-redux';
 import { FaTimes, FaCheck } from 'react-icons/fa';
 
-const DashUsers = () => {
-  const [users, setUsers] = useState([]);
+const DashComments = () => {
+  const { currentUser } = useSelector((state) => state.user);
+  const [comments, setComments] = useState([]);
   const [showMore, setShowMore] = useState(true);
   const [showModal, setShowModal] = useState(false);
-  const [userIdToDelete, setUserIdToDelete] = useState('');
+  const [commentIdToDelete, setCommentIdToDelete] = useState('');
   const [DeleteMessage, setDeleteMessage] = useState('');
-
-  const { currentUser } = useSelector((state) => state.user);
-
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchComments = async () => {
       try {
-        const res = await fetch(`/api/user/getusers`);
+        const res = await fetch(`/api/comment/getcomments`);
         const data = await res.json();
         if (res.ok) {
-          setUsers(data.users);
-          if (data.users.length < 9) {
+          setComments(data.comments);
+          if (data.comments.length < 9) {
             setShowMore(false);
           }
         }
@@ -28,19 +26,20 @@ const DashUsers = () => {
       }
     };
     if (currentUser.isAdmin) {
-      fetchUsers();
+      fetchComments();
     }
   }, [currentUser._id]);
 
   const handleShowMore = async () => {
-    const startIndex = users.length;
+    const startIndex = comments.length;
     try {
-      const res = await fetch(`/api/user/getusers?startIndex=${startIndex}`);
+      const res = await fetch(
+        `/api/comment/getcomments?startIndex=${startIndex}`
+      );
       const data = await res.json();
-
       if (res.ok) {
-        setUsers((prev) => [...prev, ...data.users]);
-        if (data.users.length < 9) {
+        setComments((prev) => [...prev, ...data.comments]);
+        if (data.comments.length < 9) {
           setShowMore(false);
         }
       }
@@ -49,18 +48,21 @@ const DashUsers = () => {
     }
   };
 
-  const handleDeleteUser = async () => {
+  const handleDeleteComment = async () => {
     setShowModal(false);
     try {
-      const res = await fetch(`/api/user/delete/${userIdToDelete}`, {
-        method: 'DELETE',
-      });
+      const res = await fetch(
+        `/api/comment/deleteComment/${commentIdToDelete}`,
+        {
+          method: 'DELETE',
+        }
+      );
       const data = await res.json();
-
       if (res.ok) {
-        setUsers((prev) => {
-          return prev.filter((user) => user._id !== userIdToDelete);
-        });
+        setComments((prev) =>
+          prev.filter((comment) => comment._id !== commentIdToDelete)
+        );
+        setShowModal(false);
       } else {
         console.log(data.message);
       }
@@ -71,51 +73,35 @@ const DashUsers = () => {
   };
 
   return (
-    <div className='dash_user_container'>
-      {currentUser.isAdmin && users.length > 0 ? (
+    <div className='dash_comment_container'>
+      {currentUser.isAdmin && comments.length > 0 ? (
         <>
+          {/* //TODO : make it bg gray and not hover effect that field  */}
           <table className='main-table'>
             <tr className='table-row'>
-              <thead>Date created</thead>
-              <thead>User Image</thead>
-              <thead>Username</thead>
-              <thead>Email</thead>
-              <thead>Admin</thead>
+              <thead>Date updated</thead>
+              <thead>Comment content</thead>
+              <thead>Number of likes</thead>
+              <thead>PostId</thead>
+              <thead>UserId</thead>
               <thead>Delete</thead>
             </tr>
-            {users.map((user) => (
+            {comments.map((comment) => (
               <tr
-                key={user._id}
+                key={comment._id}
                 className='table-row'>
                 <td className='td-content'>
-                  {new Date(user.createdAt).toLocaleDateString()}
+                  {new Date(comment.updatedAt).toLocaleDateString()}
                 </td>
-                <td className='td-content'>
-                  <img
-                    src={user.profilePicture}
-                    alt={user.username}
-                    style={{
-                      width: '30px',
-                      height: '30px',
-                      borderRadius: '50%',
-                      marginTop: '5px',
-                    }}
-                  />
-                </td>
-                <td className='td-content'>{user.username}</td>
-                <td className='td-content'>{user.email}</td>
-                <td className='td-content'>
-                  {user.isAdmin ? (
-                    <FaCheck style={{ color: 'green' }} />
-                  ) : (
-                    <FaTimes style={{ color: 'red' }} />
-                  )}
-                </td>
+                <td className='td-content'>{comment.content}</td>
+                <td className='td-content'>{comment.numberOfLikes}</td>
+                <td className='td-content'>{comment.postId}</td>
+                <td className='td-content'>{comment.userId}</td>
                 <td className='td-content'>
                   <span
                     onClick={() => {
                       setShowModal(true);
-                      setUserIdToDelete(user._id);
+                      setCommentIdToDelete(comment._id);
                     }}
                     type='button'
                     className='dash_post_delete_btn'>
@@ -135,7 +121,7 @@ const DashUsers = () => {
           )}
         </>
       ) : (
-        <p className='no-content'>You have no users yet!</p>
+        <p className='no-content'>You have no comments yet!</p>
       )}
 
       {/* // modal here ... */}
@@ -143,13 +129,13 @@ const DashUsers = () => {
         <div className='modal'>
           <div className='modal-content'>
             <TiDelete className='modal-logo' />
-            <h1>Delete User</h1>
-            <p>Are you sure you want to delete this user?</p>
+            <h1>Delete Comment</h1>
+            <p>Are you sure you want to delete this comment?</p>
             <div className='modal-btn-container'>
               <button
                 className='modal-btn'
                 onClick={() => {
-                  handleDeleteUser();
+                  handleDeleteComment();
                 }}>
                 Yes, I'm sure
               </button>
@@ -174,4 +160,4 @@ const DashUsers = () => {
   );
 };
 
-export default DashUsers;
+export default DashComments;

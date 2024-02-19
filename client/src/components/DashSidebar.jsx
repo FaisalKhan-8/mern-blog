@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
+  HiAnnotation,
   HiArrowSmRight,
   HiDocumentText,
   HiOutlineUserGroup,
@@ -35,7 +36,9 @@ const DashSidebar = () => {
     <div className='sidebar'>
       <div className='sidebar-header'>
         <div className='sidebar-item'>
-          <Link className='sidebar-link' to='/dashboard?tab=profile'>
+          <Link
+            className='sidebar-link'
+            to='/dashboard?tab=profile'>
             <div className='sidebar-elem'>
               <HiUser className='sidebar-icon' />
               Profile
@@ -43,7 +46,9 @@ const DashSidebar = () => {
             </div>
           </Link>
           {currentUser.isAdmin && (
-            <Link to='/dashboard?tab=posts' className='sidebar-link'>
+            <Link
+              to='/dashboard?tab=posts'
+              className='sidebar-link'>
               <div className='sidebar-elem'>
                 <HiDocumentText className='sidebar-icon' />
                 Posts
@@ -51,14 +56,28 @@ const DashSidebar = () => {
             </Link>
           )}
           {currentUser.isAdmin && (
-            <Link to='/dashboard?tab=users' className='sidebar-link'>
+            <Link
+              to='/dashboard?tab=users'
+              className='sidebar-link'>
               <div className='sidebar-elem'>
                 <HiOutlineUserGroup className='sidebar-icon' />
                 Users
               </div>
             </Link>
           )}
-          <Link className='sidebar-link' onClick={handleSignOut}>
+          {currentUser.isAdmin && (
+            <Link
+              to='/dashboard?tab=comments'
+              className='sidebar-link'>
+              <div className='sidebar-elem'>
+                <HiAnnotation className='sidebar-icon' />
+                Comments
+              </div>
+            </Link>
+          )}
+          <Link
+            className='sidebar-link'
+            onClick={handleSignOut}>
             <div className='sidebar-elem'>
               <HiArrowSmRight className='sidebar-icon' />
               Sign Out

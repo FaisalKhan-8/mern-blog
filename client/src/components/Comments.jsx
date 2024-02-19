@@ -112,6 +112,7 @@ const Comments = ({ comment, onLike, onEdit, onDelete }) => {
                     ' ' +
                     (comment.numberOfLikes === 1 ? 'like' : 'likes')}
               </p>
+              {/* // TODO: admin can only delete comments */}
               {currentUser &&
                 (currentUser._id === comment.userId || currentUser.isAdmin) && (
                   <>
