@@ -30,6 +30,10 @@
     border-radius: 5px;
     margin-bottom: 10px;
     font-family: 'Poppins', sans-serif;
+
+    &:focus {
+      outline: 2px solid $gradient;
+    }
   }
 
   .comment_form_item {
@@ -257,7 +261,7 @@
   width: 100%;
   margin-bottom: 10px;
   padding: 10px;
-  border: none;
+  border: 1px solid $gradient;
   border-radius: 5px;
 
   &:focus {
