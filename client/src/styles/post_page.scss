@@ -156,3 +156,37 @@
     opacity: 0;
   }
 }
+
+// recent articles...
+.Recent_articles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  gap: 20px;
+
+  h1 {
+    font-size: 40px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 20px;
+  }
+}
+
+.recent_articles_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  // flex-wrap: wrap;
+}
+
+// media queries
+
+@media screen and (max-width: 768px) {
+  .recent_articles_container {
+    flex-direction: column;
+  }
+}

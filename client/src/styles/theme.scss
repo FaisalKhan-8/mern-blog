@@ -118,4 +118,12 @@
   .comment-like-container {
     border-top: 1px solid rgba(239, 239, 239, 0.253);
   }
+
+  // recent post ...
+
+  .PostCard_item {
+    .PostCard_link {
+      color: $white;
+    }
+  }
 }
