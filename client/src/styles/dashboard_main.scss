@@ -1,0 +1,196 @@
+.dash_main_container {
+  padding: 0.75rem;
+  margin-left: 9rem;
+}
+
+.dash_sub_container {
+  display: flex;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.dash_container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.dash_comp_container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+
+  .dash_comp_header_container {
+    h3 {
+      color: $gray;
+      font-size: 1rem; /* 16px */
+      line-height: 1.5rem; /* 24px */
+      text-transform: uppercase;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.dash_user_icon {
+  color: $white;
+  background-color: $gradient;
+  font-size: 3rem; /* 48px */
+  line-height: 1;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.dash_comp_text_container {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+
+  .comp_text {
+    color: $gray;
+  }
+  .comp_span {
+    display: flex;
+    align-items: center;
+    color: $gradient;
+  }
+}
+
+.dash-recent-user {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  width: 100%;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border-radius: 5px;
+}
+
+.dash-recent-user-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: 12px;
+
+  h1 {
+    padding: 10px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+}
+
+.dash_comp_btn {
+  background-image: linear-gradient(
+    to right,
+    #8f3434 0%,
+    #d39f56 51%,
+    #8f3434 100%
+  );
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  display: block;
+
+  &:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.dash_comp_link {
+  text-decoration: none;
+  color: $white;
+}
+
+.dash-recent-main-container {
+  display: grid;
+  margin-bottom: 10px;
+  margin-left: 9rem;
+  padding: 0.75rem;
+  grid-template-columns: repeat(2, 2fr);
+  gap: 10px;
+}
+
+.dash-table-head {
+  height: 40px;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 10px;
+}
+
+.dash-tbody {
+  border-top-width: 1px;
+  border-bottom-width: 0px;
+}
+
+.dash-trow {
+  background-color: white;
+  td {
+    padding: 5px;
+  }
+}
+.dash-table-image {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: $gray;
+}
+
+.content-para {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  // width: 24rem; /* 384px */
+}
+
+// media queries
+
+@media only screen and (max-width: 542px) {
+  .dash_main_container {
+    margin-left: 0rem;
+  }
+
+  .dash_container {
+    width: 100%;
+  }
+
+  .dash-recent-main-container {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    margin-left: 0rem;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media only screen and (width: 1080px) {
+  .dash-recent-user {
+    width: auto;
+  }
+  .dash-recent-main-container {
+    display: grid;
+    margin-bottom: 10px;
+    margin-left: 0rem;
+    padding: 0.75rem;
+    grid-template-columns: repeat(2, 2fr);
+    gap: 10px;
+  }
+}

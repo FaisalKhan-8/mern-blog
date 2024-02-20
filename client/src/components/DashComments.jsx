@@ -78,7 +78,7 @@ const DashComments = () => {
         <>
           {/* //TODO : make it bg gray and not hover effect that field  */}
           <table className='main-table'>
-            <tr className='table-row'>
+            <tr className='table-row-head'>
               <thead>Date updated</thead>
               <thead>Comment content</thead>
               <thead>Number of likes</thead>
@@ -86,29 +86,32 @@ const DashComments = () => {
               <thead>UserId</thead>
               <thead>Delete</thead>
             </tr>
+
             {comments.map((comment) => (
-              <tr
-                key={comment._id}
-                className='table-row'>
-                <td className='td-content'>
-                  {new Date(comment.updatedAt).toLocaleDateString()}
-                </td>
-                <td className='td-content'>{comment.content}</td>
-                <td className='td-content'>{comment.numberOfLikes}</td>
-                <td className='td-content'>{comment.postId}</td>
-                <td className='td-content'>{comment.userId}</td>
-                <td className='td-content'>
-                  <span
-                    onClick={() => {
-                      setShowModal(true);
-                      setCommentIdToDelete(comment._id);
-                    }}
-                    type='button'
-                    className='dash_post_delete_btn'>
-                    Delete
-                  </span>
-                </td>
-              </tr>
+              <tbody>
+                <tr
+                  key={comment._id}
+                  className='table-row '>
+                  <td className='td-content'>
+                    {new Date(comment.updatedAt).toLocaleDateString()}
+                  </td>
+                  <td className='td-content'>{comment.content}</td>
+                  <td className='td-content'>{comment.numberOfLikes}</td>
+                  <td className='td-content'>{comment.postId}</td>
+                  <td className='td-content'>{comment.userId}</td>
+                  <td className='td-content'>
+                    <span
+                      onClick={() => {
+                        setShowModal(true);
+                        setCommentIdToDelete(comment._id);
+                      }}
+                      type='button'
+                      className='dash_post_delete_btn'>
+                      Delete
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
             ))}
           </table>
           {showMore && (

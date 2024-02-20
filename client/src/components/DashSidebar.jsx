@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   HiAnnotation,
   HiArrowSmRight,
+  HiChartPie,
   HiDocumentText,
   HiOutlineUserGroup,
   HiUser,
@@ -36,6 +37,16 @@ const DashSidebar = () => {
     <div className='sidebar'>
       <div className='sidebar-header'>
         <div className='sidebar-item'>
+          {currentUser && currentUser.isAdmin && (
+            <Link
+              className='sidebar-link'
+              to='/dashboard?tab=dash'>
+              <div className='sidebar-elem'>
+                <HiChartPie className='sidebar-icon' />
+                Dashboard
+              </div>
+            </Link>
+          )}
           <Link
             className='sidebar-link'
             to='/dashboard?tab=profile'>

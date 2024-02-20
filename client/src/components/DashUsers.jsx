@@ -75,7 +75,7 @@ const DashUsers = () => {
       {currentUser.isAdmin && users.length > 0 ? (
         <>
           <table className='main-table'>
-            <tr className='table-row'>
+            <tr className='table-row-head '>
               <thead>Date created</thead>
               <thead>User Image</thead>
               <thead>Username</thead>

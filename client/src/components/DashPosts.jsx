@@ -80,7 +80,7 @@ const DashPosts = () => {
       {currentUser.isAdmin && userPosts.length > 0 ? (
         <>
           <table className='main-table'>
-            <tr className='table-row'>
+            <tr className='table-row-head '>
               <thead>Date updated</thead>
               <thead>Post image</thead>
               <thead>Post title</thead>

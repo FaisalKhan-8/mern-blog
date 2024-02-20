@@ -18,8 +18,9 @@
       font-weight: 400;
       color: $black;
       font-family: 'Poppins', sans-serif;
+      transition: all 0.3s ease;
       &:hover {
-        color: $gray;
+        color: $red;
       }
     }
   }
@@ -44,6 +45,7 @@
       margin-right: 10px;
       color: $white;
       cursor: pointer;
+      transition: all 0.3s ease;
       &:hover {
         color: $gradient;
       }
