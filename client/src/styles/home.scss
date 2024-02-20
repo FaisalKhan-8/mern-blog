@@ -1,0 +1,95 @@
+.Home-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 7rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+
+  h1 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: bold;
+  }
+  p {
+    color: $gray;
+    font-size: 0.8rem;
+  }
+}
+
+.Home-link {
+  text-decoration: none;
+  color: $gradient;
+  font-size: 0.8rem;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.CallTOAction-home {
+  padding: 0.75rem;
+  background-color: #ccfbf1;
+  margin-bottom: 10px;
+}
+
+.postCard-home {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
+}
+
+.postCard-container {
+  h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+
+.postCard-post-container {
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+  gap: 20px;
+}
+
+.postCard-link {
+  text-decoration: none;
+  text-align: center;
+
+  color: $gradient;
+  &:hover {
+    text-decoration: underline;
+  }
+  p {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+// media queries
+
+@media (min-width: 1024px) {
+  .Home-container {
+    padding: 7rem;
+    h1 {
+      font-size: 3.75rem; /* 60px */
+      line-height: 1;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+}
