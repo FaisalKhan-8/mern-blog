@@ -81,6 +81,12 @@
 
 // media queries
 
+@media only screen and (max-width: 542px) {
+  .postCard-post-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 @media (min-width: 1024px) {
   .Home-container {
     padding: 7rem;
