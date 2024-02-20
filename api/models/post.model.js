@@ -17,8 +17,7 @@ const postSchema = new mongoose.Schema(
     },
     image: {
       type: String,
-      default:
-        'https://b2203234.smushcdn.com/2203234/wp-content/uploads/2020/06/Blog-Post-e1592315549383.jpg?lossy=0&strip=1&webp=1',
+      default: 'https://i.ibb.co/n0DQjcQ/postdefault-Img.jpg',
     },
     category: {
       type: 'string',

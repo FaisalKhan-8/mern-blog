@@ -17,7 +17,7 @@ const CallToAction = () => {
       </div>
       <div className='action_img'>
         <img
-          src='/callToAction.svg'
+          src='/BeatBlog.jpg'
           alt='call to action'
         />
       </div>
