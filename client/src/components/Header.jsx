@@ -119,7 +119,9 @@ const Header = () => {
         </ul>
       </div>
 
-      <button className='btn1'>
+      <button
+        className='btn1'
+        onClick={handleSubmit}>
         <AiOutlineSearch />
       </button>
       {/* //dropdown menu... */}

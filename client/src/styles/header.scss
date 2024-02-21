@@ -255,9 +255,25 @@ form {
   .nav-logo {
     font-size: 15px;
   }
-  .header-input {
-    display: none;
+  form {
+    .header-input {
+      width: 120px;
+      position: absolute;
+      text-align: center;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      left: 100px;
+      top: 21px;
+
+      font-family: 'Poppins', sans-serif;
+
+      &:focus {
+        outline: 1px solid $gradient;
+      }
+    }
   }
+
   .search-icon {
     display: none;
   }
