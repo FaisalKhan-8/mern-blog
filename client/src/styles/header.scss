@@ -47,22 +47,24 @@ form {
       outline: 1px solid $gradient;
     }
   }
-
-  .search-icon {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    padding: 5px;
-    font-size: 25px;
-    right: 30;
-    top: 24px;
-    color: #5e5e5e;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    &:hover {
-      color: $gradient;
-      border: 1px solid $gradient;
+  button {
+    border: none;
+    .search-icon {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      padding: 5px;
+      font-size: 25px;
+      right: 30;
+      top: 24px;
+      color: #5e5e5e;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      &:hover {
+        color: $gradient;
+        border: 1px solid $gradient;
+      }
     }
   }
 }
