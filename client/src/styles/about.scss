@@ -1,0 +1,48 @@
+.about-page-main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-page {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 0.8rem;
+  text-align: center;
+}
+
+.about-head {
+  h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 1.5rem 0;
+  }
+}
+
+.about-page-text {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  color: $gray;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  a {
+    font-size: 1.2rem;
+    color: $primary;
+    text-decoration: none;
+    transition: all 0.5s;
+    &:hover {
+      color: $gradient;
+    }
+  }
+}
