@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import '/react-quill/dist/quill.snow.css';
 import {
   getDownloadURL,
   getStorage,
@@ -87,7 +87,9 @@ const CreatePost = () => {
     <div className='create_post_container'>
       <h1>Create a post</h1>
 
-      <form className='create_post_form' onSubmit={handleSubmit}>
+      <form
+        className='create_post_form'
+        onSubmit={handleSubmit}>
         <div className='create_post_div'>
           <input
             type='text'
@@ -139,7 +141,11 @@ const CreatePost = () => {
           </div>
         )}
         {formData.image && (
-          <img className='upload-image' src={formData.image} alt='image' />
+          <img
+            className='upload-image'
+            src={formData.image}
+            alt='image'
+          />
         )}
 
         <ReactQuill
@@ -155,7 +161,9 @@ const CreatePost = () => {
           }}
         />
 
-        <button type='submit' className='create_post_btn'>
+        <button
+          type='submit'
+          className='create_post_btn'>
           Publish
         </button>
         {publishError && (
