@@ -3,6 +3,7 @@ import React from 'react';
 const About = () => {
   const githubUrl = 'https://github.com/FaisalKhan-8';
   const linkedinUrl = 'https://www.linkedin.com/in/faisal-khan-ab4524184/';
+  const portfolio = 'https://faisal-portfolio-mocha.vercel.app/';
 
   return (
     <div className='about-page-main'>
@@ -46,6 +47,12 @@ const About = () => {
                 target='_blank'
                 rel='noopener noreferrer'>
                 LinkedIn
+              </a>
+              <a
+                href={portfolio}
+                target='_blank'
+                rel='noopener noreferrer'>
+                Portfolio
               </a>
             </div>
           </div>
