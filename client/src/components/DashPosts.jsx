@@ -41,7 +41,7 @@ const DashPosts = () => {
       const data = await res.json();
 
       if (res.ok) {
-        setUserPosts((prev) => [...userPosts, ...data.posts]);
+        setUserPosts((prev) => [...prev, ...data.posts]);
         if (data.posts.length < 9) {
           setShowMore(false);
         }

@@ -115,7 +115,9 @@ const UpdatePost = () => {
     <div className='create_post_container'>
       <h1>Update post</h1>
 
-      <form className='create_post_form' onSubmit={handleSubmit}>
+      <form
+        className='create_post_form'
+        onSubmit={handleSubmit}>
         <div className='create_post_div'>
           <input
             type='text'
@@ -169,7 +171,11 @@ const UpdatePost = () => {
           </div>
         )}
         {formData.image && (
-          <img className='upload-image' src={formData.image} alt='image' />
+          <img
+            className='upload-image'
+            src={formData.image}
+            alt='image'
+          />
         )}
 
         <ReactQuill
@@ -186,7 +192,9 @@ const UpdatePost = () => {
           }}
         />
 
-        <button type='submit' className='create_post_btn'>
+        <button
+          type='submit'
+          className='create_post_btn'>
           Update post
         </button>
         {publishError && (
